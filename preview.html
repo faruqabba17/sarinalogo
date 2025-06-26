@@ -93,9 +93,15 @@
   </div>
 
   <script>
-    const logoPath = localStorage.getItem("selectedLogo") || "./logos/academy/aca1.svg";
-    const companyName = localStorage.getItem("companyName") || "YOUR BRAND";
-    const companyTagline = localStorage.getItem("companyTagline") || "LOGO TEMPLATE";
+    // Helper to get parameters
+    function getQueryParam(key) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(key);
+    }
+
+    const logoPath = getQueryParam("logo") || "logos/academy/aca1.svg";
+    const companyName = getQueryParam("name") || "YOUR BRAND";
+    const companyTagline = getQueryParam("tagline") || "LOGO TEMPLATE";
 
     const previewDiv = document.getElementById("logoPreview");
     const taglineInput = document.getElementById("taglineInput");
@@ -108,9 +114,10 @@
         svg = svg.replace(/LOGO TEMPLATE/g, companyTagline);
         previewDiv.innerHTML = svg;
         updateBackgroundColor(bgColorPicker.value);
+        taglineInput.value = companyTagline;
       })
       .catch(() => {
-        previewDiv.innerHTML = "<p style='color:red;'>❌ Failed to load logo. Check the path.</p>";
+        previewDiv.innerHTML = "<p style='color:red;'>❌ Failed to load logo. Check the path or filename.</p>";
       });
 
     function updateBackgroundColor(color) {
@@ -123,7 +130,6 @@
       const svgText = previewDiv.querySelectorAll("text");
       if (svgText.length >= 2) {
         svgText[1].textContent = e.target.value;
-        localStorage.setItem("companyTagline", e.target.value);
       }
     });
 
@@ -135,8 +141,8 @@
       const viewBox = svg.getAttribute("viewBox");
       const [minX, minY, width, height] = viewBox ? viewBox.split(" ").map(Number) : [0, 0, 600, 600];
 
-      const scaleFactor = 3;
       const canvas = document.createElement("canvas");
+      const scaleFactor = 3;
       canvas.width = width * scaleFactor;
       canvas.height = height * scaleFactor;
 
