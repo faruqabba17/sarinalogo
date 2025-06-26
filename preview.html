@@ -3,164 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Preview Logo – Sarina Creatives</title>
+  <title>Logo Preview – Sarina Creatives</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f8fafc;
-      color: #1f2937;
-    }
-
-    header {
-      background: #ffffff;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #e5e7eb;
-      text-align: center;
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #4f46e5;
-    }
-
-    .toolbar {
-      background: #ffffff;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem 2rem;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-    }
-
-    .toolbar > div {
-      display: flex;
-      flex-direction: column;
-      font-size: 0.9rem;
-    }
-
-    .toolbar label {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-    }
-
-    .logo-container {
-      margin: 2rem;
-      padding: 2rem;
-      text-align: center;
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    button {
-      background-color: #4f46e5;
-      color: white;
-      border: none;
-      padding: 0.6rem 1.2rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-
-    button:hover {
-      background-color: #4338ca;
-    }
+    body { font-family: sans-serif; margin: 0; background: #f9fafb; color: #111; }
+    header { background: white; padding: 1rem; text-align: center; font-weight: bold; color: #4f46e5; }
+    .toolbar, .logo-container { padding: 1.5rem; text-align: center; }
+    .logo-container { background: white; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); margin: 2rem; }
+    input, button { padding: 0.5rem; border-radius: 8px; border: 1px solid #ccc; margin: 0.5rem; }
+    button { background: #4f46e5; color: white; border: none; cursor: pointer; }
   </style>
 </head>
 <body>
-  <header>Sarina Creatives – Logo Preview</header>
 
-  <div class="toolbar">
-    <div>
-      <label for="bgColorPicker">Background</label>
-      <input type="color" id="bgColorPicker" value="#ffffff"/>
-    </div>
-    <div>
-      <label for="taglineInput">Tagline</label>
-      <input type="text" id="taglineInput" value="LOGO TEMPLATE"/>
-    </div>
-    <div>
-      <label>&nbsp;</label>
-      <button onclick="downloadAsJPEG()">Download as JPG</button>
-    </div>
-  </div>
+<header>Sarina Creatives – Logo Preview</header>
 
-  <div class="logo-container" id="logoPreview">
-    <p>Loading preview...</p>
-  </div>
+<div class="toolbar">
+  <input type="color" id="bgColorPicker" value="#ffffff" />
+  <input type="text" id="taglineInput" placeholder="Tagline" />
+  <button onclick="downloadAsJPEG()">Download JPG</button>
+</div>
 
-  <script>
-    // Helper to get parameters
-    function getQueryParam(key) {
-      const params = new URLSearchParams(window.location.search);
-      return params.get(key);
-    }
+<div class="logo-container" id="logoPreview">Loading logo...</div>
 
-    const logoPath = getQueryParam("logo") || "logos/academy/aca1.svg";
-    const companyName = getQueryParam("name") || "YOUR BRAND";
-    const companyTagline = getQueryParam("tagline") || "LOGO TEMPLATE";
+<script>
+  const getQueryParam = key => new URLSearchParams(window.location.search).get(key);
+  const logoPath = getQueryParam("logo") || "logos/academy/aca1.svg";
+  const companyName = getQueryParam("name") || "YOUR BRAND";
+  const companyTagline = getQueryParam("tagline") || "LOGO TEMPLATE";
 
-    const previewDiv = document.getElementById("logoPreview");
-    const taglineInput = document.getElementById("taglineInput");
-    const bgColorPicker = document.getElementById("bgColorPicker");
+  const previewDiv = document.getElementById("logoPreview");
+  const taglineInput = document.getElementById("taglineInput");
+  const bgColorPicker = document.getElementById("bgColorPicker");
 
-    fetch(logoPath)
-      .then(res => res.text())
-      .then(svg => {
-        svg = svg.replace(/TECHNOLOGY/g, companyName);
-        svg = svg.replace(/LOGO TEMPLATE/g, companyTagline);
-        previewDiv.innerHTML = svg;
-        updateBackgroundColor(bgColorPicker.value);
-        taglineInput.value = companyTagline;
-      })
-      .catch(() => {
-        previewDiv.innerHTML = "<p style='color:red;'>❌ Failed to load logo. Check the path or filename.</p>";
-      });
-
-    function updateBackgroundColor(color) {
-      previewDiv.style.backgroundColor = color;
-    }
-
-    bgColorPicker.addEventListener("input", e => updateBackgroundColor(e.target.value));
-
-    taglineInput.addEventListener("input", e => {
-      const svgText = previewDiv.querySelectorAll("text");
-      if (svgText.length >= 2) {
-        svgText[1].textContent = e.target.value;
-      }
+  fetch(logoPath)
+    .then(res => res.text())
+    .then(svg => {
+      svg = svg.replace(/TECHNOLOGY/g, companyName);
+      svg = svg.replace(/LOGO TEMPLATE/g, companyTagline);
+      previewDiv.innerHTML = svg;
+      taglineInput.value = companyTagline;
+      previewDiv.style.background = bgColorPicker.value;
+    })
+    .catch(() => {
+      previewDiv.innerHTML = "<p style='color:red;'>❌ Logo not found. Check logo path.</p>";
     });
 
-    function downloadAsJPEG() {
-      const svg = previewDiv.querySelector("svg");
-      if (!svg) return alert("SVG not loaded.");
+  taglineInput.addEventListener("input", e => {
+    const svgText = previewDiv.querySelectorAll("text");
+    if (svgText.length >= 2) svgText[1].textContent = e.target.value;
+  });
 
-      const svgData = new XMLSerializer().serializeToString(svg);
-      const viewBox = svg.getAttribute("viewBox");
-      const [minX, minY, width, height] = viewBox ? viewBox.split(" ").map(Number) : [0, 0, 600, 600];
+  bgColorPicker.addEventListener("input", e => {
+    previewDiv.style.backgroundColor = e.target.value;
+  });
 
-      const canvas = document.createElement("canvas");
-      const scaleFactor = 3;
-      canvas.width = width * scaleFactor;
-      canvas.height = height * scaleFactor;
+  function downloadAsJPEG() {
+    const svg = previewDiv.querySelector("svg");
+    if (!svg) return alert("SVG not loaded.");
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const viewBox = svg.getAttribute("viewBox");
+    const [ , , width = 600, height = 600] = viewBox ? viewBox.split(" ") : [0, 0, 600, 600];
+    const canvas = document.createElement("canvas");
+    const scale = 3;
+    canvas.width = width * scale;
+    canvas.height = height * scale;
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+    img.onload = function () {
+      ctx.fillStyle = bgColorPicker.value;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const jpeg = canvas.toDataURL("image/jpeg", 1.0);
+      const a = document.createElement("a");
+      a.href = jpeg;
+      a.download = "logo.jpg";
+      a.click();
+    };
+    img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
+  }
+</script>
 
-      const ctx = canvas.getContext("2d");
-      const img = new Image();
-      img.onload = function () {
-        ctx.fillStyle = bgColorPicker.value;
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-
-        const jpeg = canvas.toDataURL("image/jpeg", 1.0);
-        const a = document.createElement("a");
-        a.href = jpeg;
-        a.download = "sarina-logo.jpg";
-        a.click();
-      };
-      img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData)));
-    }
-  </script>
 </body>
 </html>
