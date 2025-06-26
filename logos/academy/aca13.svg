@@ -1,0 +1,13 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Paper Sheet -->
+  <rect x="200" y="180" width="200" height="250" rx="12" fill="#3B82F6"/>
+  <!-- Checkmark -->
+  <polyline points="240,320 280,360 360,280" fill="none" stroke="#FACC15" stroke-width="8"/>
+
+  <text id="companyNameText" x="300" y="470" font-size="48" fill="#1F2937" text-anchor="middle" font-family="Arial" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="510" font-size="20" fill="#6B7280" text-anchor="middle" font-family="Arial">
+    Certified Learning Paths
+  </text>
+</svg>

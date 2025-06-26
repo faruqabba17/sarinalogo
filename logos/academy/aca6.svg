@@ -1,0 +1,13 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shield -->
+  <path d="M300,150 Q250,200 200,250 L200,400 Q300,450 400,400 L400,250 Q350,200 300,150 Z" fill="#1E40AF"/>
+  <!-- Pen -->
+  <line x1="300" y1="160" x2="300" y2="350" stroke="#FACC15" stroke-width="6"/>
+
+  <text id="companyNameText" x="300" y="470" font-size="48" fill="#93C5FD" text-anchor="middle" font-family="Georgia" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="510" font-size="20" fill="#93C5FD" text-anchor="middle" font-family="Arial">
+    Securing Smart Learners
+  </text>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rays -->
+  <circle cx="300" cy="200" r="80" fill="#E0F2FE"/>
+  <!-- Book -->
+  <rect x="180" y="260" width="100" height="100" rx="10" fill="#4F46E5"/>
+  <rect x="320" y="260" width="100" height="100" rx="10" fill="#4F46E5"/>
+
+  <text id="companyNameText" x="300" y="420" font-size="48" fill="#1E3A8A" text-anchor="middle" font-family="Arial" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="460" font-size="20" fill="#64748B" text-anchor="middle" font-family="Arial">
+    Discover, Learn, Evolve
+  </text>
+</svg>

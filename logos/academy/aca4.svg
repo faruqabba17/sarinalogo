@@ -1,0 +1,14 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Book base -->
+  <path d="M150 250 Q200 200 300 250 Q400 200 450 250 L450 400 Q400 370 300 400 Q200 370 150 400 Z" fill="#4F46E5"/>
+  <!-- Lightbulb on top -->
+  <circle cx="300" cy="150" r="30" fill="#FBBF24"/>
+  <line x1="300" y1="180" x2="300" y2="210" stroke="#FBBF24" stroke-width="6" />
+
+  <text id="companyNameText" x="300" y="470" font-size="48" fill="#1E3A8A" text-anchor="middle" font-family="Georgia" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="510" font-size="20" fill="#6B7280" text-anchor="middle" font-family="Arial">
+    Learning Brightens the Future
+  </text>
+</svg>

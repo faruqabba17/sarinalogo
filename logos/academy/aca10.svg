@@ -1,0 +1,15 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Stack of books -->
+  <rect x="200" y="220" width="200" height="40" fill="#3B82F6"/>
+  <rect x="200" y="270" width="200" height="40" fill="#60A5FA"/>
+  <rect x="200" y="320" width="200" height="40" fill="#93C5FD"/>
+  <!-- Bookmark -->
+  <polygon points="380,220 400,220 400,280 390,270 380,280" fill="#FACC15"/>
+
+  <text id="companyNameText" x="300" y="430" font-size="46" fill="#1E293B" text-anchor="middle" font-family="Arial" font-weight="bold">
+   TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="470" font-size="20" fill="#6B7280" text-anchor="middle" font-family="Arial">
+    Read. Learn. Succeed.
+  </text>
+</svg>

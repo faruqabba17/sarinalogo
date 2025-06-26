@@ -1,0 +1,13 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hat -->
+  <polygon points="150,250 300,180 450,250 300,320" fill="#6366F1"/>
+  <line x1="300" y1="220" x2="300" y2="350" stroke="#A5B4FC" stroke-width="5"/>
+  <circle cx="300" cy="350" r="5" fill="#FACC15"/>
+
+  <text id="companyNameText" x="300" y="430" font-size="48" fill="#1F2937" text-anchor="middle" font-family="Arial" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="470" font-size="20" fill="#6B7280" text-anchor="middle" font-family="Arial">
+    Unlocking Your Knowledge
+  </text>
+</svg>
