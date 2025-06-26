@@ -1,0 +1,19 @@
+<svg width="100%" height="100%" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blocks -->
+  <rect x="240" y="220" width="60" height="60" fill="#A5B4FC"/>
+  <text x="270" y="260" font-size="24" fill="#1E3A8A" text-anchor="middle" font-family="Arial" font-weight="bold">A</text>
+  <rect x="300" y="220" width="60" height="60" fill="#C084FC"/>
+  <text x="330" y="260" font-size="24" fill="#6B21A8" text-anchor="middle" font-family="Arial" font-weight="bold">B</text>
+  <rect x="270" y="280" width="60" height="60" fill="#FCA5A5"/>
+  <text x="300" y="320" font-size="24" fill="#B91C1C" text-anchor="middle" font-family="Arial" font-weight="bold">C</text>
+
+  <!-- Footer -->
+  <rect x="60" y="360" width="480" height="140" rx="30" fill="#F3F4F6"/>
+
+  <text id="companyNameText" x="300" y="420" font-size="48" fill="#1F2937" text-anchor="middle" font-family="Georgia" font-weight="bold">
+    TECHNOLOGY
+  </text>
+  <text id="taglineText" x="300" y="465" font-size="22" fill="#4B5563" text-anchor="middle" font-family="Arial">
+    Early Learning Matters
+  </text>
+</svg>
